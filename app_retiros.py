@@ -3,8 +3,6 @@ import pandas as pd
 from datetime import datetime
 import os
 
-# 1. CONFIGURACIÓN INICIAL (Lista para la Nube)
-# ¡Cambio clave! Ahora solo busca el archivo en la misma carpeta donde esté la app
 ARCHIVO_EXCEL = "Messi.xlsx"
 
 COLUMNAS = [
@@ -69,7 +67,7 @@ st.sidebar.title("🔐 Acceso")
 menu_opciones = ["👤 Solicitante (Crear/Rastrear)"] 
 
 st.sidebar.markdown("---")
-# Clave secreta para Costos
+# Clave
 clave = st.sidebar.text_input("Código Área de Costos:", type="password")
 if clave == "costos2026": 
     st.sidebar.success("Acceso de administrador concedido")
@@ -78,7 +76,7 @@ if clave == "costos2026":
 rol = st.sidebar.radio("Navegación:", menu_opciones)
 
 
-# --- PANTALLA 1: EL USUARIO COMÚN ---
+# --- PANTALLA 1
 if rol == "👤 Solicitante (Crear/Rastrear)":
     st.title("💸 Solicitar Liberación de Fondo")
     
@@ -139,7 +137,7 @@ if rol == "👤 Solicitante (Crear/Rastrear)":
                 )
 
 
-# --- PANTALLA 2: EL APROBADOR (SOLO CON CLAVE) ---
+# --- PANTALLA 2
 elif rol == "💼 Área de Costos (Aprobar)":
     st.title("💼 Panel de Aprobación")
     df = st.session_state.df
@@ -175,7 +173,7 @@ elif rol == "💼 Área de Costos (Aprobar)":
                     st.error("❌ ERROR: Hubo un problema al guardar.")
 
 
-# --- PANTALLA 3: EL MAPEADOR DE BI ---
+# --- PANTALLA 3: EL MAPEADOR DE BI 
 elif rol == "📊 Ver Historial Completo":
     st.title("📊 Base de Datos Maestra (Histórico)")
     
